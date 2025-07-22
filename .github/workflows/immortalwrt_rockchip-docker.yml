@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/DHDAXCW/immortalwrt
-  REPO_BRANCH: openwrt-24.10
+  REPO_URL: https://github.com/DHDAXCW/lede-rockchip.git
+  REPO_BRANCH: master
   CONFIG_FILE: immortalwrt/rockchip/defconfig
   DIY_P1_SH: immortalwrt/diy-part1.sh
   DIY_P2_SH: immortalwrt/diy-part2.sh
@@ -136,7 +136,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
       with:
         files: ${{ env.FIRMWARE }}/*
         name: ${{ env.date3 }}
